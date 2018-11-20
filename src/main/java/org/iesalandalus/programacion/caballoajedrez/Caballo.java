@@ -8,11 +8,16 @@ public class Caballo {
 	public Caballo() {
 		
 		this.color=color.NEGRO;
-		this.posicion=new Posicion(8,'b');
-		
+		this.posicion=new Posicion(8,'b');	
 	}
-	public Color getColor() {
-		return color;
+	
+	public Caballo(Color color) {
+		color=color.BLANCO;
+		if (color==color.BLANCO) {
+			this.posicion=new Posicion(1,'b');
+		}else
+			this.posicion=new Posicion(8,'b');
+	}
 	}
 	
 	public void setColor(Color color) {
