@@ -81,13 +81,11 @@ public class Posicion {
 			return false;
 		return true;
 	}
+
 	
-	
-		
-	
-	
-	
-	
+	public String toString() {
+		return "posicion:{"+fila+""+columna+"}";
+	}
 	
 	
 }
