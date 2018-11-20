@@ -10,6 +10,19 @@ public class Posicion {
 	
 	}
 	
+	public Posicion(int fila,char columna) {
+		
+		if (fila<1 || fila>8) {
+			throw new IllegalArgumentException("la fila no existe");
+			}else {
+				this.fila=fila;
+			}
+			if (columna< 'a'|| columna>'h') {
+				throw new IllegalArgumentException("la columna no existe");
+			}else {
+				this.columna=columna;
+			}
+	}
 	
 	public int getFila() {
 		return fila;
