@@ -18,6 +18,20 @@ public class Caballo {
 		}else
 			this.posicion=new Posicion(8,'b');
 	}
+	
+	public Caballo(Color color,char columna) {
+		color=color.BLANCO;
+		
+		if(columna=='b' || columna =='g') {	
+				if(color==color.BLANCO) {
+					this.posicion=new Posicion(1,columna);
+				}else {
+					this.posicion=new Posicion(8,columna);
+				}
+					
+			}else {
+				throw new IllegalArgumentException("la columna no es la inicial");
+			}
 	}
 	
 	public void setColor(Color color) {
