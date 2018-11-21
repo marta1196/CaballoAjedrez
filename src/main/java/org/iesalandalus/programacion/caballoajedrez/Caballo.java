@@ -33,6 +33,10 @@ public class Caballo {
 				throw new IllegalArgumentException("la columna no es la inicial");
 			}
 	}
+	public Caballo(Caballo caballo) {
+		this.color=caballo.color;
+		this.posicion=caballo.posicion;
+	}
 	
 	public void setColor(Color color) {
 		this.color = color;
