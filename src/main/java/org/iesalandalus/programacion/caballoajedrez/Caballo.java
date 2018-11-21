@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.caballoajedrez;
 
+import javax.naming.OperationNotSupportedException;
+
 public class Caballo {
 	
 	private Color color;
@@ -51,5 +53,80 @@ public class Caballo {
 	}
 	
 	
-
+	public void mover(Direccion direccion) throws OperationNotSupportedException {
+		switch (direccion) {
+		
+		case ARRIBA_IZQUIERDA:
+				if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
+					this.posicion.setFila(this.posicion.getFila() + 2);
+					this.posicion.setColumna((char)(this.posicion.getColumna() - 1));
+				}else {
+				throw new OperationNotSupportedException("no se puede mover arriba a la izquierda");
+			}
+			break;
+		
+		case ARRIBA_DERECHA:
+			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
+				this.posicion.setFila(this.posicion.getFila() + 2);
+				this.posicion.setColumna((char)(this.posicion.getColumna() + 1));
+			} else {
+				throw new OperationNotSupportedException("no se puede mover arriba a la derecha");
+			}
+			break;
+		case  DERECHA_ARRIBA:
+			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
+				this.posicion.setColumna((char)(this.posicion.getColumna() + 2));
+				this.posicion.setFila(this.posicion.getFila() + 1);
+			} else {
+				throw new OperationNotSupportedException("no se puede mover por la derecha arriba");
+			}
+			break;
+		case DERECHA_ABAJO:
+			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
+				this.posicion.setColumna((char)(this.posicion.getColumna() + 2));
+				this.posicion.setFila(this.posicion.getFila() - 1);
+			} else {
+				throw new OperationNotSupportedException("no se puede mover por la derecha abajo");
+			}
+			break;
+		case ABAJO_DERECHA:
+			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
+				this.posicion.setFila(this.posicion.getFila() - 2);
+				this.posicion.setColumna((char)(this.posicion.getColumna() + 1));
+			} else {
+				throw new OperationNotSupportedException("no se puede mover abajo a la derecha");
+			}
+			break;
+		case ABAJO_IZQUIERDA :
+			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
+				this.posicion.setFila(this.posicion.getFila() - 2);
+				this.posicion.setColumna((char)(this.posicion.getColumna() -1));
+			} else {
+				throw new OperationNotSupportedException("no se puede mover abajo a la izquierda");
+			}
+		break;
+		case IZQUIERDA_ARRIBA :
+			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
+				this.posicion.setColumna((char)(this.posicion.getColumna() - 2));
+				this.posicion.setFila(this.posicion.getFila() + 1);
+			} else {
+				throw new OperationNotSupportedException("no se puede mover por la izquierda arriba");
+			}
+		break;
+		case IZQUIERDA_ABAJO :
+			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
+				this.posicion.setColumna((char)(this.posicion.getColumna() - 2));
+				this.posicion.setFila(this.posicion.getFila() - 1);
+			} else {
+				throw new OperationNotSupportedException("no se puede mover por la izquierda abajo");
+			}
+		break;
+	
+		}
+		
 }
+}
+
+
+	
+
