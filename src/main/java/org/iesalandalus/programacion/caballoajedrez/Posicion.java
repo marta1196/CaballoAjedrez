@@ -1,5 +1,8 @@
 package org.iesalandalus.programacion.caballoajedrez;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 public class Posicion {
 	
 	private int fila;
@@ -25,9 +28,13 @@ public class Posicion {
 	}
 	
 	public Posicion(Posicion posicion) {
+		if (posicion == null) {
+			throw new IllegalArgumentException("ERROR: No es posible copiar una posici√≥n nula.");
+		}else {
 		
-		this.fila=posicion.fila;
-		this.columna=posicion.columna;
+			this.fila=posicion.getFila();
+			this.columna=posicion.getColumna();
+		}
 	}
 	
 	public int getFila() {
@@ -35,13 +42,20 @@ public class Posicion {
 	}
 
 	
-	public void setFila(int fila) {
-		if (fila<1 || fila>8) {
-			throw new IllegalArgumentException("la fila no existe");
-			}else {
-				this.fila=fila;
-			}
-	}
+	/*public void setFila(int fila) {
+		try {
+			if (fila<1 || fila>8) {
+			fail("DeberÌa haber saltado una excepciÛn indicando que la fila es incorrecta");
+		} catch (IllegalArgumentException e) {
+			System.out.println("ERROR: Fila no v·lida."); 
+		}
+		try {
+			
+			fail("Deber√≠a haber saltado una excepci√≥n indicando que la fila es incorrecta");
+		} catch (IllegalArgumentException e) {
+			System.out.println("ERROR: Fila no v·lida.");
+		}
+	}*/
 
 	
 	public char getColumna() {
@@ -52,7 +66,7 @@ public class Posicion {
 	public void setColumna(char columna) {
 
 		if (columna<'a' || columna>'h') {
-		throw new IllegalArgumentException("la columna no existe");
+		throw new IllegalArgumentException("ERROR: Columna no v·lida");
 		}else {
 			this.columna=columna;
 		}
@@ -84,7 +98,7 @@ public class Posicion {
 
 	
 	public String toString() {
-		return "posicion:{"+fila+""+columna+"}";
+		return "[fila="+fila+", columna="+columna+"]";
 	}
 	
 	
