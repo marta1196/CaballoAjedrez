@@ -7,30 +7,31 @@ public class Caballo {
 	private Color color;
 	private Posicion posicion;
 	
-	private static final Color caballoBlanco=Color.BLANCO;
-	private static final Color caballoNegro=Color.NEGRO;
 	
 	public Caballo() {
 		
-		this.color=caballoNegro;
+		this.color=Color.NEGRO;
 		this.posicion=new Posicion(8,'b');	
 	}
 	
 	public Caballo(Color color) {
-		
-		if(caballoBlanco==null) {
+		this.color=color;
+		if(color==null) {
 			throw new IllegalArgumentException("ERROR: No se puede asignar un color nulo.");
 		}else {
-		if (color==caballoBlanco) {
-			this.posicion=new Posicion(1,'b');
-		}else
+		if (color==Color.BLANCO) {
+			posicion=new Posicion(1,'b');
+		}if (color==Color.NEGRO) {
 			this.posicion=new Posicion(8,'b');
+		}
 		}
 	}
 	
 	public Caballo(Color color,char columna) {
-		color=color.BLANCO;
-		
+		this.color=color;
+		if(color==null) {
+			throw new IllegalArgumentException("ERROR: No se puede asignar un color nulo.");
+		}else { 
 		if(columna=='b' || columna =='g') {	
 				if(color==color.BLANCO) {
 					this.posicion=new Posicion(1,columna);
@@ -39,8 +40,9 @@ public class Caballo {
 				}
 					
 			}else {
-				throw new IllegalArgumentException("la columna no es la inicial");
+				throw new IllegalArgumentException("ERROR: Columna inicial no válida.");
 			}
+		}
 	}
 	public Caballo(Caballo caballo) {
 		this.color=caballo.getColor();
