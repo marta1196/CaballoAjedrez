@@ -42,20 +42,14 @@ public class Posicion {
 	}
 
 	
-	/*public void setFila(int fila) {
-		try {
-			if (fila<1 || fila>8) {
-			fail("DeberÌa haber saltado una excepciÛn indicando que la fila es incorrecta");
-		} catch (IllegalArgumentException e) {
-			System.out.println("ERROR: Fila no v·lida."); 
-		}
-		try {
-			
-			fail("Deber√≠a haber saltado una excepci√≥n indicando que la fila es incorrecta");
-		} catch (IllegalArgumentException e) {
-			System.out.println("ERROR: Fila no v·lida.");
-		}
-	}*/
+	public void setFila(int fila) {
+
+		if (fila<1 || fila>8) {
+			throw new IllegalArgumentException("ERROR: Fila no v√°lida.");
+			}else {
+				this.fila=fila;
+			}
+	}
 
 	
 	public char getColumna() {
