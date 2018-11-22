@@ -7,18 +7,25 @@ public class Caballo {
 	private Color color;
 	private Posicion posicion;
 	
+	private static final Color caballoBlanco=Color.BLANCO;
+	private static final Color caballoNegro=Color.NEGRO;
+	
 	public Caballo() {
 		
-		this.color=color.NEGRO;
+		this.color=caballoNegro;
 		this.posicion=new Posicion(8,'b');	
 	}
 	
 	public Caballo(Color color) {
-		color=color.BLANCO;
-		if (color==color.BLANCO) {
+		
+		if(caballoBlanco==null) {
+			throw new IllegalArgumentException("ERROR: No se puede asignar un color nulo.");
+		}else {
+		if (color==caballoBlanco) {
 			this.posicion=new Posicion(1,'b');
 		}else
 			this.posicion=new Posicion(8,'b');
+		}
 	}
 	
 	public Caballo(Color color,char columna) {
@@ -36,89 +43,88 @@ public class Caballo {
 			}
 	}
 	public Caballo(Caballo caballo) {
-		this.color=caballo.color;
+		this.color=caballo.getColor();
 		this.posicion=caballo.posicion;
 	}
+	
+	public Color getColor() {
+		return color;
+	}
+
 	
 	public void setColor(Color color) {
 		this.color = color;
 	}
+
 	
 	public Posicion getPosicion() {
 		return posicion;
 	}
-	
+
+
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
 	}
-	
-	
+
 	public void mover(Direccion direccion) throws OperationNotSupportedException {
 		switch (direccion) {
 		
 		case ARRIBA_IZQUIERDA:
-				if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
-					this.posicion.setFila(this.posicion.getFila() + 2);
-					this.posicion.setColumna((char)(this.posicion.getColumna() - 1));
-				}else {
-				throw new OperationNotSupportedException("no se puede mover arriba a la izquierda");
-			}
+				try {
+					posicion = new Posicion(posicion.getFila() + 2, (char)(posicion.getColumna() - 1));
+				}catch (IllegalArgumentException e) {
+					throw new OperationNotSupportedException("ERROR: Movimiento no válido.");
+				}
 			break;
 		
 		case ARRIBA_DERECHA:
-			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
-				this.posicion.setFila(this.posicion.getFila() + 2);
-				this.posicion.setColumna((char)(this.posicion.getColumna() + 1));
-			} else {
-				throw new OperationNotSupportedException("no se puede mover arriba a la derecha");
+			try {
+				posicion = new Posicion(posicion.getFila() + 2, (char)(posicion.getColumna() + 1));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException("ERROR: Movimiento no válido.");
 			}
 			break;
 		case  DERECHA_ARRIBA:
-			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
-				this.posicion.setColumna((char)(this.posicion.getColumna() + 2));
-				this.posicion.setFila(this.posicion.getFila() + 1);
-			} else {
-				throw new OperationNotSupportedException("no se puede mover por la derecha arriba");
+			try {
+				posicion = new Posicion(posicion.getFila() + 1, (char)(posicion.getColumna() + 2));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException("ERROR: Movimiento no válido.");
 			}
 			break;
 		case DERECHA_ABAJO:
-			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
-				this.posicion.setColumna((char)(this.posicion.getColumna() + 2));
-				this.posicion.setFila(this.posicion.getFila() - 1);
-			} else {
-				throw new OperationNotSupportedException("no se puede mover por la derecha abajo");
+			try
+			{
+				posicion = new Posicion(posicion.getFila() - 1, (char)(posicion.getColumna() + 2));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException("ERROR: Movimiento no válido.");
 			}
 			break;
 		case ABAJO_DERECHA:
-			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
-				this.posicion.setFila(this.posicion.getFila() - 2);
-				this.posicion.setColumna((char)(this.posicion.getColumna() + 1));
-			} else {
-				throw new OperationNotSupportedException("no se puede mover abajo a la derecha");
+			try{
+				posicion = new Posicion(posicion.getFila() - 2, (char)(posicion.getColumna() + 1));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException("ERROR: Movimiento no válido.");
 			}
 			break;
 		case ABAJO_IZQUIERDA :
-			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
-				this.posicion.setFila(this.posicion.getFila() - 2);
-				this.posicion.setColumna((char)(this.posicion.getColumna() -1));
-			} else {
-				throw new OperationNotSupportedException("no se puede mover abajo a la izquierda");
+			try{
+				posicion = new Posicion(posicion.getFila() - 2, (char)(posicion.getColumna() - 1));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException("ERROR: Movimiento no válido.");
 			}
 		break;
 		case IZQUIERDA_ARRIBA :
-			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
-				this.posicion.setColumna((char)(this.posicion.getColumna() - 2));
-				this.posicion.setFila(this.posicion.getFila() + 1);
-			} else {
-				throw new OperationNotSupportedException("no se puede mover por la izquierda arriba");
+			try{
+				posicion = new Posicion(posicion.getFila() + 1, (char)(posicion.getColumna() - 2));
+			}catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException("ERROR: Movimiento no válido.");
 			}
 		break;
 		case IZQUIERDA_ABAJO :
-			if (this.posicion.getFila() >= 1 && this.posicion.getFila() < 8 && this.posicion.getColumna() >= 'a' && this.posicion.getColumna() <'h') {
-				this.posicion.setColumna((char)(this.posicion.getColumna() - 2));
-				this.posicion.setFila(this.posicion.getFila() - 1);
-			} else {
-				throw new OperationNotSupportedException("no se puede mover por la izquierda abajo");
+			try{
+				posicion = new Posicion(posicion.getFila() - 1, (char)(posicion.getColumna() - 2));
+			} catch (IllegalArgumentException e) {
+				throw new OperationNotSupportedException("ERROR: Movimiento no válido.");
 			}
 		break;
 	
