@@ -160,6 +160,14 @@ public class Caballo {
 			return false;
 		return true;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Caballo [posición=[fila=8, columna=b], color=NEGRO]";
+	}
 	
 	
 }
