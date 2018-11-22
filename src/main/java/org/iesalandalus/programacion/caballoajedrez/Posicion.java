@@ -60,7 +60,7 @@ public class Posicion {
 	public void setColumna(char columna) {
 
 		if (columna<'a' || columna>'h') {
-		throw new IllegalArgumentException("ERROR: Columna no v·lida");
+		throw new IllegalArgumentException("ERROR: Columna no v√°lida.");
 		}else {
 			this.columna=columna;
 		}
