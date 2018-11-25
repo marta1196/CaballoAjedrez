@@ -168,7 +168,7 @@ public class Caballo {
 	 */
 	@Override
 	public String toString() {
-		return "Caballo [posición=[fila=8, columna=b], color=NEGRO]";
+		return "Caballo [posición=[fila="+posicion.getFila()+", columna="+posicion.getColumna()+", color="+color+"]";
 	}
 	
 	
